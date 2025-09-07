@@ -28,7 +28,7 @@ export default function Controls({
 
   return (
     <div className="absolute top-4 left-4 z-10">
-      <Card className="w-80 bg-card/80 backdrop-blur-sm border-border">
+      <Card className="w-80 bg-white/30 backdrop-blur-md border-white/40">
         <CardHeader className="flex flex-row items-center justify-between pb-4">
           <CardTitle className="font-headline text-2xl">ChronoLens</CardTitle>
           <Button variant="ghost" size="icon" onClick={onReset} aria-label="Reset view">
