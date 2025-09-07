@@ -1,6 +1,8 @@
 # Gravity Lensing Visualizer
 
 This is an interactive 3D web application that demonstrates the phenomenon of gravitational lensing, as predicted by Albert Einstein's theory of General Relativity. It allows you to manipulate the mass of a black hole and observe how its immense gravity bends the fabric of spacetime, distorting the light from the stars and galaxies behind it.
+<img width="673" height="539" alt="image" src="https://github.com/user-attachments/assets/6b17c3e4-a86c-42de-84ac-665466894741" />
+
 
 ## The Science Behind Gravitational Lensing
 
