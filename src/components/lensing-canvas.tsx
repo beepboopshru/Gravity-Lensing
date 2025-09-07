@@ -90,7 +90,7 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
 
     // Background
     const loader = new THREE.TextureLoader();
-    const bgTexture = loader.load('https://picsum.photos/4096/2048', () => {
+    const bgTexture = loader.load('https://storage.googleapis.com/maker-studio-5287a.appspot.com/assets/milky-way-2695569_1280.jpg', () => {
         bgTexture.mapping = THREE.EquirectangularReflectionMapping;
         bgTexture.colorSpace = THREE.SRGBColorSpace;
         scene.background = bgTexture;
@@ -184,5 +184,5 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
     };
   }, [parameters, setCameraControls]); 
 
-  return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full" data-ai-hint="starry sky" />;
+  return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full" data-ai-hint="milky way galaxy" />;
 }
