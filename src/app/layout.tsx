@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Grav Lens',
+  title: 'Gravity Lensing',
   description: 'An interactive 3D Gravitational Lensing Visualizer',
 };
 
