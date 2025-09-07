@@ -9,11 +9,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Wand2 } from "lucide-react";
 
 const defaultInstructions = `
-// Ray tracing through a gravitational field
-// 1. For each pixel, cast a ray from the camera.
-// 2. Calculate the ray's trajectory as it passes near the black hole.
-// 3. The path is bent based on the mass of the black hole.
-// 4. Determine the color from the background where the ray terminates.
+// Gravitational Lensing effect via Fragment Shader
+// 1. Normalize pixel coordinates to a -1.0 to 1.0 range.
+// 2. Account for aspect ratio to prevent distortion.
+// 3. Define the gravitational source (black hole) at the center.
+// 4. Calculate the Schwarzschild radius based on the black hole's mass.
+// 5. For each fragment, calculate the distance from the center.
+// 6. If inside the Schwarzschild radius, color the fragment black (event horizon).
+// 7. Otherwise, calculate the light ray's bending angle based on the mass.
+// 8. Displace the texture lookup coordinate (UV) based on the calculated bending.
+// 9. Sample the background texture using the new, distorted UV coordinates.
+// 10. If the ray is bent off-texture, color the fragment black (deep space).
 `.trim();
 
 export default function AiImprover() {
@@ -50,7 +56,7 @@ export default function AiImprover() {
               id="original-instructions"
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
-              rows={8}
+              rows={12}
               className="mt-2 font-mono text-xs"
             />
           </div>
