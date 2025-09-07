@@ -154,6 +154,7 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
 
     // Scene setup
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000); // Set background to black
     const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
@@ -175,14 +176,6 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
         }
     });
 
-    // Background
-    const loader = new THREE.TextureLoader();
-    const bgTexture = loader.load('https://storage.googleapis.com/maker-studio-5287a.appspot.com/assets/milky-way-2695569_1280.jpg', () => {
-        bgTexture.mapping = THREE.EquirectangularReflectionMapping;
-        bgTexture.colorSpace = THREE.SRGBColorSpace;
-        scene.background = bgTexture;
-    });
-    
     // Stars
     const starVertices = [];
     for (let i = 0; i < 10000; i++) {
@@ -293,7 +286,6 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
       cancelAnimationFrame(animationFrameId);
       currentMount.removeChild(renderer.domElement);
       renderer.dispose();
-      bgTexture.dispose();
       starGeometry.dispose();
       starMaterial.dispose();
       blackHoleGeometry.dispose();
@@ -305,5 +297,5 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
     };
   }, [parameters, setCameraControls]); 
 
-  return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full" data-ai-hint="milky way galaxy" />;
+  return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full" />;
 }
