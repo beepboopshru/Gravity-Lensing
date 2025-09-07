@@ -95,6 +95,29 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
         bgTexture.colorSpace = THREE.SRGBColorSpace;
         scene.background = bgTexture;
     });
+    
+    // Stars
+    const starVertices = [];
+    for (let i = 0; i < 10000; i++) {
+        const x = (Math.random() - 0.5) * 2000;
+        const y = (Math.random() - 0.5) * 2000;
+        const z = (Math.random() - 0.5) * 2000;
+        const distanceSq = x*x + y*y + z*z;
+        if(distanceSq > 100*100) { // only add stars outside a certain radius
+            starVertices.push(x, y, z);
+        }
+    }
+    const starGeometry = new THREE.BufferGeometry();
+    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+    const starMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 1.5,
+        transparent: true,
+        opacity: 0.8,
+        blending: THREE.AdditiveBlending,
+    });
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
 
     // Black Hole
     const blackHoleGeometry = new THREE.SphereGeometry(2, 64, 64);
@@ -156,6 +179,7 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
       accretionDisk.visible = parameters.showAccretionDisk;
       
       accretionDisk.rotation.z += 0.005;
+      stars.rotation.y += 0.0001;
 
       controls.update();
 
@@ -175,6 +199,8 @@ export default function LensingCanvas({ parameters, setCameraControls }: Lensing
       currentMount.removeChild(renderer.domElement);
       renderer.dispose();
       bgTexture.dispose();
+      starGeometry.dispose();
+      starMaterial.dispose();
       blackHoleGeometry.dispose();
       blackHoleMaterial.dispose();
       diskGeometry.dispose();
