@@ -27,7 +27,7 @@ export default function Controls({
 
   return (
     <div className="absolute top-4 left-4 z-10">
-      <Card className="w-80 bg-white/30 backdrop-blur-md border-white/40">
+      <Card className="w-80 bg-white/20 backdrop-blur-lg border-white/30 text-card-foreground">
         <CardHeader className="flex flex-row items-center justify-between pb-4">
           <CardTitle className="font-headline text-2xl">Gravity Lensing</CardTitle>
           <Button variant="ghost" size="icon" onClick={onReset} aria-label="Reset view">
