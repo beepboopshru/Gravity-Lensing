@@ -4,7 +4,6 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import AiImprover from "@/components/ai-improver";
 import { RotateCcw } from "lucide-react";
 
 type ControlsProps = {
@@ -58,7 +57,6 @@ export default function Controls({
               onCheckedChange={handleAccretionDiskToggle}
             />
           </div>
-          <AiImprover />
         </CardContent>
       </Card>
     </div>
